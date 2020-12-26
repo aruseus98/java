@@ -82,7 +82,6 @@ class Player {
         return "[x=" + (int)p.getX() + ",y=" + (int)p.getY() + "]";
     } 
 
-    // Returns clockwise curly moving order from current move (our strategy)
     private static String[] getCurlyMoves(String move) {
         String[] moves = null;
         switch (move) {
