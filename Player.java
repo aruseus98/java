@@ -1,31 +1,29 @@
-import java.util.*;
-import java.io.*;
-import java.math.*;
+import java.awt.Point;
+import java.util.Scanner;
+import java.util.Vector;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 class Player {
-	int[][] board;
-	public void initBoard(){
-		board=new int[30][20];
-		for(int i=0;i<30;i++){
-			for(int j=0;j<20;j++){
-				board[i][j]=0;
-			}
-		}
-	}
-	public void add(int x,int y){
-		board[x][y]=1;
-	}
-	public boolean isEmpty(int x,int y){
-		if(x>=29||x<0||y>=19||y<0){
-			return false;
-		}
-		if(board[x][y]==0){
-			return true;
-		}
-		return false;
-	}
+static List<HashSet<Point>> reserved = new ArrayList<HashSet<Point>>(); 
+static int N = 0; // Nombre total des joueurs (allant de 2 à 4).
+static Point actP = new Point(-1, -1); // Position actuel de la moto [X1,Y1]
+	
+//Stock le prochain mouvement avec le nombre de chemins possibles
 
-    public static void main(String args[]) {
+static class Step {
+Step(String aMove, int aCount) { move = aMove; count = aCount; } 
+String getMove() { return move; }
+int getCount() { return count; }
+@Override
+public String toString() { return move + " (" + count + ")"; }
+private String move; 
+private int count; 
+}
+
+
+public static void main(String args[]) {
 
         // Read init information from standard input, if any
         Scanner in = new Scanner(System.in);
